@@ -1,26 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class SectionGenerator : MonoBehaviour
 {
     [SerializeField] private List<GameObject> sectionList;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerExit2D(Collider2D other)
     {
-        Instantiate(sectionList[0]);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        Debug.Log("exited the spawn");
+        Debug.Log("exit");
+        Instantiate(sectionList[0],this.transform.position,quaternion.identity);
     }
 }
