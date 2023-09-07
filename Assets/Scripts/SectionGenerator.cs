@@ -7,10 +7,28 @@ using UnityEngine;
 public class SectionGenerator : MonoBehaviour
 {
     [SerializeField] private List<GameObject> sectionList;
+    private bool acceptSpawn;
 
-    private void OnTriggerExit2D(Collider2D other)
+    [SerializeField] private float waitTime;
+    private float timer;
+
+    [SerializeField] private GameObject previousSection;
+    [SerializeField] private float sectionDistance = 20f;
+    
+    private void Update()
     {
-        Debug.Log("exit");
-        Instantiate(sectionList[0],this.transform.position,quaternion.identity);
+        timer += Time.deltaTime;
+        
+        if (timer > waitTime)
+        {
+            timer -= waitTime;
+
+            SpawnSection();
+        }
+    }
+
+    private void SpawnSection()
+    {
+        previousSection = Instantiate(sectionList[0],previousSection.transform.position + new Vector3(sectionDistance,0,0),quaternion.identity);
     }
 }
