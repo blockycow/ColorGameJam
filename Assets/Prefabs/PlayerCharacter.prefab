@@ -268,7 +268,7 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   BlockingWeaponStates: 
-  WalkSpeed: 2
+  WalkSpeed: 4
   MovementSpeedMultiplier: 1
   AbilityMovementSpeedMultiplier: 1
   PushSpeedMultiplier: 1
