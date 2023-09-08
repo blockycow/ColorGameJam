@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SectionGenerator : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> sectionList;
-    private bool acceptSpawn;
+    //list of possible sections to spawn
+    [SerializeField] private List<Section> sectionList;
 
     [SerializeField] private float waitTime;
     private float timer;
@@ -18,17 +20,31 @@ public class SectionGenerator : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-        
-        if (timer > waitTime)
-        {
-            timer -= waitTime;
-
-            SpawnSection();
-        }
     }
 
     private void SpawnSection()
     {
-        previousSection = Instantiate(sectionList[0],previousSection.transform.position + new Vector3(sectionDistance,0,0),quaternion.identity);
+        int randomSection = Random.Range(0, sectionList.Count);
+        
+        previousSection = Instantiate(sectionList[randomSection].gameObject,
+            this.transform.position/*+ new Vector3(sectionList[randomSection].gameObject.GetComponent<BoxCollider2D>().size.x/2,0,0)*/,
+            quaternion.identity);
+        
+        SetSection();
+    }
+
+    private void SetSection()
+    {
+        
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (timer > waitTime)
+        {
+            timer = 0;
+
+            SpawnSection();
+        }
     }
 }

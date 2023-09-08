@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 119040, guid: 746759dbd10d04b49b3bf462392cc98c, type: 3}
       propertyPath: m_Name
-      value: PlayerCharacter
+      value: JoelCharacter
       objectReference: {fileID: 0}
     - target: {fileID: 425048, guid: 746759dbd10d04b49b3bf462392cc98c, type: 3}
       propertyPath: m_RootOrder
@@ -55,5 +55,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 11421110, guid: 746759dbd10d04b49b3bf462392cc98c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11449144, guid: 746759dbd10d04b49b3bf462392cc98c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 11421110, guid: 746759dbd10d04b49b3bf462392cc98c, type: 3}
+    - {fileID: 11449144, guid: 746759dbd10d04b49b3bf462392cc98c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 746759dbd10d04b49b3bf462392cc98c, type: 3}
