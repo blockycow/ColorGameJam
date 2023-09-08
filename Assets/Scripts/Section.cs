@@ -6,6 +6,10 @@ public class Section : MonoBehaviour
 {
     [SerializeField] private List<SpriteRenderer> colorTriangles;
 
+    public ColorPortal Portal;
+
+
+    public MovementColor MovementColor;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,20 +24,22 @@ public class Section : MonoBehaviour
 
     public void SetColor(MovementColor movementColor )
     {
+        MovementColor = movementColor;
+        
         var color = Color.black;
         switch (movementColor)
         {
             case MovementColor.Green:
-                color = Color.green;
+                color = new Color(0, 1, 0, 0.6f);
                 break;
             case MovementColor.Red:
-                color = Color.red;
+                color = new Color(1, 0, 0, 0.6f);
                 break;
             case MovementColor.Blue:
-                color = Color.blue;
+                color = new Color(0, 0, 1, 0.6f);
                 break;
             case MovementColor.Yellow:
-                color = Color.yellow;
+                color = new Color(1, 1, 0, 0.6f);
                 break;
         }
 
@@ -41,5 +47,10 @@ public class Section : MonoBehaviour
         {
             sprite.color = color;
         }
+    }
+
+    public void ActivateColorPortal()
+    {
+        
     }
 }
