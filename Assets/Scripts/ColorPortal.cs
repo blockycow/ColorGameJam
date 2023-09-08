@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using MoreMountains.CorgiEngine;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -43,9 +44,32 @@ public class ColorPortal : MonoBehaviour
         portal.SetActive(false);
     }
 
-    private void SetMovement(MovementColor movementColor)
+    private void SetMovement(MovementColor movementColor, Transform player)
     {
         Debug.Log("Portal");
+        switch (movementColor)
+        {
+            case MovementColor.Green:
+                player.GetComponent<CharacterHorizontalMovement>().WalkSpeed = 4;
+                player.GetComponent<CharacterJump>().JumpHeight = 3;
+                player.GetComponent<CharacterGravity>().SetGravityAngle(0);
+                break;
+            case MovementColor.Red:
+                player.GetComponent<CharacterHorizontalMovement>().WalkSpeed = 6;
+                player.GetComponent<CharacterJump>().JumpHeight = 2;
+                player.GetComponent<CharacterGravity>().SetGravityAngle(0);
+                break;
+            case MovementColor.Blue:
+                player.GetComponent<CharacterHorizontalMovement>().WalkSpeed = 2;
+                player.GetComponent<CharacterJump>().JumpHeight = 5;
+                player.GetComponent<CharacterGravity>().SetGravityAngle(0);
+                break;
+            case MovementColor.Yellow:
+                player.GetComponent<CharacterHorizontalMovement>().WalkSpeed = 4;
+                player.GetComponent<CharacterJump>().JumpHeight = 3;
+                player.GetComponent<CharacterGravity>().SetGravityAngle(-180);
+                break;
+        }
     }
 
     private void SetColor(MovementColor movementColor, ParticleSystem particles)
@@ -71,6 +95,6 @@ public class ColorPortal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        SetMovement(currentColor);
+        SetMovement(currentColor,col.transform);
     }
 }
